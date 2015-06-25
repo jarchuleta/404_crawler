@@ -20,4 +20,11 @@ contains links crawled and status checked
 **Ignore Table**
 add special case pages that crash program
 
-----------
+
+## Starting the Application
+You can seed the database with the first URL by running this code.
+
+```sql
+    INSERT INTO `pages` (`source`, `link`) 
+    VALUES ( 'http://www.lanl.gov/collaboration/index.php', 'http://www.lanl.gov/about/index.php' );
+```
