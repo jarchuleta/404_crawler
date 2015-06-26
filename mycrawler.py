@@ -7,15 +7,21 @@ import time
 
 import MySQLdb as mdb
 
+#
+# --- Prints menu
+#
 def print_cmds():
                 return "    Welcome to the my Web Crawler\n" + \
                        "    What do you want to do?\n" + \
                        "    Enter 1 - add link\n" + \
                        "    Enter 2 - parse links links\n" + \
-                       "    Enter 3 - crawl links\n" + \
                        "    Enter q - Quit\n" + \
                        "    crawler:"
 
+#
+# --- Check a link to see if it's good or bad or has a description then saves it to the 
+# database
+#
 def check_link(source):
 
 
@@ -96,6 +102,9 @@ def check_link(source):
 				add_link_to_table(source,link.get('href'))
 		
 
+#
+# --- Checks the table if this is a know bad page or url.
+#
 def is_ignore(link):
 
 	if link is None:
@@ -123,7 +132,9 @@ def is_ignore(link):
 			
 		
 
-                       
+#
+# --- This adds a link found to the table to be crawled later.
+#                       
 def add_link_to_table(source, link):
 
 
@@ -153,8 +164,8 @@ def add_link_to_table(source, link):
 		
 		if data is None:
 			print 'Added: ' 
-			print "INSERT INTO `pages` (`source`, `link`) VALUES	( '"+str(source)+"', '"+str(link)+"' );"
-			cur.execute("INSERT INTO `pages` (`source`, `link`) VALUES	( '"+str(source)+"', '"+str(link)+"' );")        
+			#print "INSERT INTO `pages` (`source`, `link`) VALUES	( '"+str(source)+"', '"+str(link)+"' );"
+			cur.execute("INSERT INTO `pages` (`source`, `link`) VALUES	( '"+str(source)+"', '"+str(link)+"' );")        		
 			print "Done"
 
 
@@ -202,11 +213,18 @@ def execute_cmd(c):
                 	check_link('http://www.lanl.gov/natlsecurity/threat/index.shtml')
                 elif c == 'q':
                     print ("End")
+
+#
+# -- Main loop
+#
 def main():
-                print(sys.version)			
                 while(True):
-                    c = raw_input(print_cmds())
-                    #c = '2'
+                    
+                    #to start the app we manually add a link to the database
+                    #c = raw_input(print_cmds())
+                    # we just want to continue parsing pages. 
+                    c = '2'
+                    
                     execute_cmd(c)
                     break
                     if c == 'q' or c == 'Q':
