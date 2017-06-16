@@ -11,8 +11,8 @@ A web crawler written in python. The purpose is to find bad links (404,403, ect)
 * mysql server (used MySQL 5.6.22)
 * [beautifulesoup](http://www.crummy.com/software/BeautifulSoup/)
 * html parser (used html5lib)
-** You'll need to upgrade Python's six package to >=1.9.0 for html5lib to work.
-*** On Mac, you need to bypass the System version as follows because *pip* won't:
+    * You'll need to upgrade Python's *six* package to >=1.9.0 for html5lib to work.
+    * On Mac, you need to bypass the System version of *six* as follows because *pip* won't:
 
 ```bash
 wget https://pypi.python.org/packages/b3/b2/238e2590826bfdd113244a40d9d3eb26918bd798fc187e2360a8367068db/six-1.10.0.tar.gz#md5=34eed507548117b2ab523ab14b2f8b55
