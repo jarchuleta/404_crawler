@@ -165,8 +165,8 @@ def add_link_to_table(source, link):
     if link is None or source is None or link.startswith('#') or link.startswith('mailto:') or link.startswith(baseurl+'/learn/'):
         return
 
-    if source.startswith('//'):
-        source = protocol + source
+    if link.startswith('//'):
+        link = protocol + link
 
     if link.startswith('/'):
         link = baseurl + link
